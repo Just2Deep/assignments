@@ -6,7 +6,26 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+    let output = [];
+    let categories = {};
+
+    for (let t of transactions) {
+        if (categories[t["category"]] == undefined) {
+            categories[t["category"]] = t["price"];
+        } else {
+            categories[t["category"]] += t["price"];
+        }
+    }
+
+    for (let a of Object.keys(categories)) {
+        let obj = {
+            category: a,
+            totalSpent: categories[a],
+        };
+        output.push(obj);
+    }
+
+    return output;
 }
 
 module.exports = calculateTotalSpentByCategory;

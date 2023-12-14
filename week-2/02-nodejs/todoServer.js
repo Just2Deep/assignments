@@ -39,11 +39,79 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const todoList = [];
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const { v4: uuidv4 } = require("uuid");
+
+const app = express();
+
+app.use(bodyParser.json());
+
+app.get("/todos", (req, res) => {
+    return res.status(200).json(todoList);
+});
+
+app.get("/todos/:id", (req, res) => {
+    const id = req.params.id;
+    const todo = todoList.find((item) => item.id === id);
+
+    if (!todo) {
+        return res.status(404).send();
+    }
+    return res.status(200).json(todo);
+});
+
+app.post("/todos", (req, res) => {
+    const newTodo = {
+        id: uuidv4(),
+        title: req.body.title,
+        description: req.body.description,
+    };
+
+    todoList.push(newTodo);
+
+    return res.status(201).json(newTodo);
+});
+
+app.put("/todos/:id", (req, res) => {
+    const id = req.params.id;
+    const todoIndex = todoList.findIndex((item) => item.id === id);
+
+    if (todoIndex == -1) {
+        return res.status(404).send();
+    } else {
+        const { title, description, completed } = req.body;
+        todoList[todoIndex].title = title || item.title;
+        todoList[todoIndex].description = description || item.description;
+        if (completed != undefined) {
+            item.completed = completed;
+        }
+
+        return res.status(200).json(todoList[todoIndex]);
+    }
+});
+
+app.delete("/todos/:id", (req, res) => {
+    const id = req.params.id;
+    const todoIndex = todoList.findIndex((item) => item.id === id);
+
+    if (todoIndex == -1) {
+        return res.status(404).send();
+    } else {
+        todoList.splice(todoIndex, 1);
+        res.status(200).send();
+    }
+});
+
+// for all other routes, return 404
+app.use((req, res, next) => {
+    res.status(404).send();
+});
+
+// app.listen(PORT, () => {
+//     console.log(`server is listening to port ${PORT}`);
+// });
+
+module.exports = app;

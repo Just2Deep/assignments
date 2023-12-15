@@ -5,6 +5,17 @@
  */
 
 function sleep(milliseconds) {
+    // let a = 0;
+
+    return new Promise((res, rej) => {
+        // setTimeout(() => res(), milliseconds);
+        let a = 0;
+        const time = (milliseconds / 90) * 100000000;
+        for (let i = 0; i < time; i++) {
+            a += 1;
+        }
+        res();
+    });
 }
 
 module.exports = sleep;

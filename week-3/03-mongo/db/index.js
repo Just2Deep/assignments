@@ -30,14 +30,12 @@ const UserSchema = new mongoose.Schema(
         password: {
             type: String,
         },
-        purchasedCourses: {
-            type: [
-                {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "Course",
-                },
-            ],
-        },
+        purchasedCourses: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Course",
+            },
+        ],
     },
     { timestamps: true }
 );

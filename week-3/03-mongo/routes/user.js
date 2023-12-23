@@ -67,7 +67,7 @@ router.post("/courses/:courseId", userMiddleware, async (req, res) => {
         return res.status(404).json({ message: "course does not exist" });
     }
 
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
         {
             username: req.headers?.username,
         },

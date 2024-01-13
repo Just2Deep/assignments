@@ -5,6 +5,7 @@ const { User, Course } = require("../db");
 const { default: mongoose } = require("mongoose");
 
 // User Routes
+<<<<<<< HEAD
 router.post("/signup", async (req, res) => {
     //   - POST /users/signup
     //   Description: Creates a new user account.
@@ -96,3 +97,22 @@ router.get("/purchasedCourses", userMiddleware, async (req, res) => {
 });
 
 module.exports = router;
+=======
+router.post('/signup', (req, res) => {
+    // Implement user signup logic
+});
+
+router.get('/courses', (req, res) => {
+    // Implement listing all courses logic
+});
+
+router.post('/courses/:courseId', userMiddleware, (req, res) => {
+    // Implement course purchase logic
+});
+
+router.get('/purchasedCourses', userMiddleware, (req, res) => {
+    // Implement fetching purchased courses logic
+});
+
+module.exports = router
+>>>>>>> 081be9ec66420098381ce7ce9e4291ba35ec3658

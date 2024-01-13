@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { Admin, Course } = require("../../03-mongo/db");
 
 // Admin Routes
+<<<<<<< HEAD
 router.post("/signup", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -102,6 +103,22 @@ router.get("/courses", adminMiddleware, async (req, res) => {
     const courses = await Course.find({ published: true });
 
     return res.status(200).json({ courses });
+=======
+router.post('/signup', (req, res) => {
+    // Implement admin signup logic
+});
+
+router.post('/signin', (req, res) => {
+    // Implement admin signup logic
+});
+
+router.post('/courses', adminMiddleware, (req, res) => {
+    // Implement course creation logic
+});
+
+router.get('/courses', adminMiddleware, (req, res) => {
+    // Implement fetching all courses logic
+>>>>>>> 081be9ec66420098381ce7ce9e4291ba35ec3658
 });
 
 module.exports = router;

@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 // User Routes
+<<<<<<< HEAD
 router.post("/signup", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -116,3 +117,26 @@ router.get("/purchasedCourses", userMiddleware, async (req, res) => {
 });
 
 module.exports = router;
+=======
+router.post('/signup', (req, res) => {
+    // Implement user signup logic
+});
+
+router.post('/signin', (req, res) => {
+    // Implement admin signup logic
+});
+
+router.get('/courses', (req, res) => {
+    // Implement listing all courses logic
+});
+
+router.post('/courses/:courseId', userMiddleware, (req, res) => {
+    // Implement course purchase logic
+});
+
+router.get('/purchasedCourses', userMiddleware, (req, res) => {
+    // Implement fetching purchased courses logic
+});
+
+module.exports = router
+>>>>>>> 081be9ec66420098381ce7ce9e4291ba35ec3658

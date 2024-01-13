@@ -4,6 +4,7 @@ const { Admin, Course } = require("../db");
 const router = Router();
 
 // Admin Routes
+<<<<<<< HEAD
 router.post("/signup", async (req, res) => {
     // - POST /admin/signup
     //   Description: Creates a new admin account.
@@ -68,6 +69,17 @@ router.post("/courses", adminMiddleware, (req, res) => {
 });
 
 router.get("/courses", adminMiddleware, async (req, res) => {
+=======
+router.post('/signup', (req, res) => {
+    // Implement admin signup logic
+});
+
+router.post('/courses', adminMiddleware, (req, res) => {
+    // Implement course creation logic
+});
+
+router.get('/courses', adminMiddleware, (req, res) => {
+>>>>>>> 081be9ec66420098381ce7ce9e4291ba35ec3658
     // Implement fetching all courses logic
     // - GET /admin/courses
     // Description: Returns all the courses.
